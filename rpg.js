@@ -50,3 +50,32 @@ function vista() {
 
 vista();
 
+// --- ETSAIAREN LOOP-A ---
+
+function cicloDeBatalla() {
+    // 1.5 segundoro (1500ms) munstroak erasotzen du
+    setTimeout(() => {
+        
+        // Munstroa bizirik badago bakarrik erasotzen du
+        if (vidaMonstruo > 0 && vidaHeroe > 0) {
+            // Ausazko kaltea (5 eta 15 artean)
+            let golpe = Math.floor(Math.random() * 10) + 5;
+            vidaHeroe -= golpe;
+            
+            // Muga: ez jaitsi 0tik behera
+            if (vidaHeroe < 0) vidaHeroe = 0;
+            
+            vista();
+        }
+
+        // Loop-a jarraitzen du jokoa amaitu arte
+        if (vidaMonstruo > 0 && vidaHeroe > 0) {
+            cicloDeBatalla();
+        }
+
+    }, 1500);
+}
+
+// BORROKA HASI
+cicloDeBatalla();
+
