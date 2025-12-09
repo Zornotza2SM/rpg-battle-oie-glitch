@@ -1,6 +1,7 @@
 // --- MODELOA ---
 let vidaHeroe = 50;
 let vidaMonstruo = 50;
+let potionCooldown = false; // Edabea prest?
 
 // --- BISTA ---
 function vista() {
@@ -60,7 +61,9 @@ function vista() {
 
             <div class="controls">
                 <button class="boton" id="btn-atacar">⚔️ Eraso</button>
-                <button class="boton heal" id="btn-curar">🧪 Sendatu</button>
+                <button class="boton heal" id="btn-curar" ${ potionCooldown ? "disabled" : "" }>
+    ${ potionCooldown ? "Kargatzen..." : "🧪 Sendatu" }
+</button>
             </div>
         </div>
         
@@ -79,15 +82,24 @@ function vista() {
         vista();
     }
 
-    document.getElementById("btn-curar").onclick = () => {
-        // Heroia bizirik badago bakarrik sendatu daiteke
-        if (vidaHeroe > 0) {
-            vidaHeroe += 15;
-            // 100era mugatu (tope)
+    //UPDATE POTION
+ document.getElementById("btn-curar").onclick = () => {
+        if (vidaHeroe > 0 && !potionCooldown) { // Cooldown ez badago
+            vidaHeroe += 20; 
             if (vidaHeroe > 100) vidaHeroe = 100;
+            
+            // 1. Blokeatu
+            potionCooldown = true;
+            vista();
+
+            // 2. Itxaron 3 segundo (3000ms)
+            setTimeout(() => {
+                potionCooldown = false; // Desblokeatu
+                vista();
+            }, 3000);
         }
-        vista();
     }
+
 }
 
 vista();
@@ -120,4 +132,5 @@ function cicloDeBatalla() {
 
 // BORROKA HASI
 cicloDeBatalla();
+
 
