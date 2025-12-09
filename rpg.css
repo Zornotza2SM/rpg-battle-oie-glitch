@@ -47,3 +47,17 @@ body {
 .boton.heal:hover { background-color: #533483; }
 
 .status-msg { height: 20px; color: #fcdab7; margin-bottom: 10px; }
+
+.health-bar-container {
+    background-color: #333;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.health-bar {
+    height: 100%;
+    transition: width 0.3s ease; /* Animazio leuna jaisten denean */
+}

@@ -1,6 +1,7 @@
 // --- MODELOA ---
 let vidaHeroe = 50;
 let vidaMonstruo = 50;
+
 // --- BISTA ---
 function vista() {
      // Egoerak kalkulatu
@@ -10,6 +11,11 @@ function vista() {
     // Emojiak erabaki (Ternarioa)
     let iconoHeroe = heroeMuerto ? "⚰️" : "🥷";
     let iconoMonstruo = monstruoMuerto ? "💥" : "👹";
+    let colorHeroe = vidaHeroe > 30 ? "#4caf50" : "#f44336";
+    let animacionMonstruo = monstruoMuerto 
+        ? "https://assets9.lottiefiles.com/packages/lf20_96bovdur.json" // Leherketa
+        : "https://assets4.lottiefiles.com/packages/lf20_15gr10.json";  // Munstroa mugitzen
+    
 
     
  // Mezu bat prestatu
@@ -23,14 +29,33 @@ function vista() {
              ${mezua}
             
             <div class="stats">
-                <div>HEROIA: ${vidaHeroe} HP</div>
-                <div>MUNSTROA: ${vidaMonstruo} HP</div>
+        <div style="width: 45%">
+            <div>Heroia: ${vidaHeroe}</div>
+            <div class="health-bar-container">
+                <div class="health-bar" style="width: ${vidaHeroe}%; background-color: ${colorHeroe}"></div>
             </div>
+        </div>
+        <div style="width: 45%">
+            <div>Munstroa: ${vidaMonstruo}</div>
+            <div class="health-bar-container">
+                <div class="health-bar" style="width: ${vidaMonstruo}%; background-color: #e94560"></div>
+            </div>
+        </div>
+           
 
           <div class="fighters">
                 <div>${iconoHeroe}</div>
                 <div>${iconoMonstruo}</div>
+                <div style="width:100px">
+             <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_s0lwaq2n.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+        </div>
+        <div style="width:100px">
+            <lottie-player src="${animacionMonstruo}" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+        </div>
+    </div>
+                
             </div>
+            
 
 
             <div class="controls">
