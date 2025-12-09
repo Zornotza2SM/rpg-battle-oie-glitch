@@ -1,6 +1,6 @@
 // --- MODELOA ---
-let vidaHeroe = 100;
-let vidaMonstruo = 100;
+let vidaHeroe = 50;
+let vidaMonstruo = 50;
 // --- BISTA ---
 function vista() {
     console.log("vista sartu da")
@@ -26,6 +26,26 @@ function vista() {
     `;
 
     // HEMEN JOANGO DIRA GERTAERAK (3. FASEA)
+    // --- EGUNERATZEA (Gertaerak) ---
+    document.getElementById("btn-atacar").onclick = () => {
+        // Munstroa bizirik badago bakarrik eraso dezakegu
+        if (vidaMonstruo > 0) {
+            vidaMonstruo -= 10;
+            // Ezin da 0 baino txikiagoa izan (estetika)
+            if (vidaMonstruo < 0) vidaMonstruo = 0;
+        }
+        vista();
+    }
+
+    document.getElementById("btn-curar").onclick = () => {
+        // Heroia bizirik badago bakarrik sendatu daiteke
+        if (vidaHeroe > 0) {
+            vidaHeroe += 15;
+            // 100era mugatu (tope)
+            if (vidaHeroe > 100) vidaHeroe = 100;
+        }
+        vista();
+    }
 }
 
 vista();
